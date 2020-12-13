@@ -24,29 +24,34 @@
  * THE SOFTWARE.
  */
 
+namespace CardsApp\Base;
+
+use CardsApp\Base\RequestInterface;
+use CardsApp\Base\StorageSessionInterface;
+
 /**
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-*/
-
-use CardsApp\CardsApp;
-use CardsApp\Component\RequestJson;
-use CardsApp\Component\Router;
-use CardsApp\Component\ResponseJson;
-use CardsApp\Component\StorageHandler;
-
-require __DIR__ . '/vendor/autoload.php';
-
-try {
-    $app = new CardsApp(
-        new Router(), 
-        new RequestJson(), 
-        new ResponseJson(), 
-        new StorageHandler()
-    );
+ * AbstractController
+ *
+ * @author Ilya Panovskiy <panovskiy1980@gmail.com>
+ */
+abstract class AbstractController
+{
+    /** @var RequestInterface $request */ 
+    protected RequestInterface $request;
     
-    $app->run();
-} catch (\Throwable $exc) {
-    echo $exc->getTraceAsString();
+    /** @var StorageSessionInterface $storage */
+    protected StorageSessionInterface $storage;
+    
+    
+    /**
+     * @param RequestInterface $request
+     * @param StorageSessionInterface $storage
+     */
+    public function __construct(
+        RequestInterface $request, 
+        StorageSessionInterface $storage
+    ) {
+        $this->request = $request;
+        $this->storage = $storage;
+    }
 }

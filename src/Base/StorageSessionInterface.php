@@ -24,29 +24,39 @@
  * THE SOFTWARE.
  */
 
+namespace CardsApp\Base;
+
 /**
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-*/
-
-use CardsApp\CardsApp;
-use CardsApp\Component\RequestJson;
-use CardsApp\Component\Router;
-use CardsApp\Component\ResponseJson;
-use CardsApp\Component\StorageHandler;
-
-require __DIR__ . '/vendor/autoload.php';
-
-try {
-    $app = new CardsApp(
-        new Router(), 
-        new RequestJson(), 
-        new ResponseJson(), 
-        new StorageHandler()
-    );
+ * @author Ilya Panovskiy <panovskiy1980@gmail.com>
+ */
+interface StorageSessionInterface
+{
+    /**
+     * Session start
+     * 
+     * @return bool
+     */
+    public function sessionStart(): bool;
     
-    $app->run();
-} catch (\Throwable $exc) {
-    echo $exc->getTraceAsString();
+    /**
+     * Get session id
+     * 
+     * @return string
+     */
+    public function getSessionId(): string;
+    
+    /**
+     * Get session data
+     * 
+     * @return array
+     */
+    public function getSessionData(): array;
+    
+    /**
+     * Set session data
+     * 
+     * @param array $data
+     * @return void
+     */
+    public function setSessionData(array $data): void;
 }
