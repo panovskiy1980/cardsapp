@@ -110,10 +110,15 @@ class CardsDeckConditionValidator
         ?string $newName, 
         ?int $newPower
     ): void {
-        if (!isset($name) && (!isset($newName) || !isset($newPower))) {
+        if (!isset($name)) {
             throw new CheckDataException(
-                'Parameter ' . CardsDeck::CARD_NAME_PARAM . ' and ' 
-                . CardsDeck::NEW_CARD_NAME_PARAM . ' or ' 
+                'Parameter ' . CardsDeck::CARD_NAME_PARAM . ' must be present.'
+            );
+        }
+        
+        if (!isset($newName) && !isset($newPower)) {
+            throw new CheckDataException(
+                'Parameters ' . CardsDeck::NEW_CARD_NAME_PARAM . ' or ' 
                 . CardsDeck::NEW_POWER_NAME_PARAM . ' must be present.'
             );
         }

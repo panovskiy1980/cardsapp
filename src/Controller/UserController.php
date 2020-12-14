@@ -62,7 +62,11 @@ class UserController extends AbstractController
             throw new HttpException('Only GET HTTP method allowed.');
         }
         
-        return 'Hello';
+        return "Examples:"
+        . "/list GET no params"
+        . "/create POST no params"
+        . "/addcard PUT {'card_name':'Card name'}"
+        . "/removecard DELETE {'card_id':2}";
     }
     
     /**

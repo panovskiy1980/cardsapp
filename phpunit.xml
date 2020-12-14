@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         verbose="true"
+         stopOnFailure="false">
+
+    <php>
+        <const name="PHPUNIT_TEST" value="true"/>
+    </php>
+    <testsuites>
+        <testsuite name="CardsApp tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>

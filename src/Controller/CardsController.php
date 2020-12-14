@@ -60,7 +60,11 @@ class CardsController extends AbstractController
             throw new HttpException('Only GET HTTP method allowed.');
         }
         
-        return 'Hello';
+        return "Examples:"
+        . "/list GET /?page=1"
+        . "/create POST {'name':'Card name', 'power':10}"
+        . "/update PUT {'name':'Card name', 'new_name':'New Card', 'new_power':10}"
+        . "/remove DELETE {'name':'Card name'}";
     }
     
     /**

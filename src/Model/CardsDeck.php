@@ -164,11 +164,11 @@ class CardsDeck
         
         $this->validator
             ->updateCondValidate($cardDeck, $name, $newName, $newPower);
-        
-        unset($cardDeck[$name]);
 
         $newName = $newName ?? $name;
         $newPower = $newPower ?? $cardDeck[$name];
+        
+        unset($cardDeck[$name]);
 
         $cardDeck[$newName] = $newPower;
         
