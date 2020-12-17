@@ -36,7 +36,7 @@ use CardsApp\Component\Router;
 use CardsApp\Component\ResponseJson;
 use CardsApp\Component\StorageHandler;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 try {
     $app = new CardsApp(
